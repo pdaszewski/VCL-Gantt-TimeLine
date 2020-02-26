@@ -1,0 +1,5 @@
+History:
+
+2019-10-11 The first version of the code. Interface built with basic components.
+
+2020-02-26 Start of full code translation into English.

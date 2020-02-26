@@ -8,7 +8,3 @@ The chart should include a time line for one day, unlike standard charts, where 
 Overview:
 
 ![alt text](https://raw.githubusercontent.com/pdaszewski/VCL-Gantt-TimeLine/master/Doc/VCL_gantt_time_linie_screen_001.png)
-
-History:
-
-2019-10-11 The first version of the code. Interface built with basic components.
