@@ -95,10 +95,10 @@ end;
 
 procedure TMainFrm.CreateAllObjectsOnDate;
 Begin
- InsertObject('Projekt firmowy','01:15','03:25','Projekt: dap.365'+#13+'Analiza 4 fazy projektu',clBlue,clWhite);
- InsertObject('Projekt domowy','03:15','03:35','Prace w domu'+#13+'Salon',clRed,clBlack);
- InsertObject('Zadanie 1','03:40','05:25','Analiza danych'+#13+'Projekt dap.365',clBlue,clWhite);
- InsertObject('Oczekuj¹ce','02:10','04:45','Przegl¹d innych zadañ',clBlue,clWhite);
+ InsertObject('Company project','01:15','03:25','Design: dap.365'+#13+'Analysis of the 4th phase of the project',clBlue,clWhite);
+ InsertObject('Home project','03:15','03:35','Houseworks'+#13+'Living room',clRed,clBlack);
+ InsertObject('Task 1','03:40','05:25','Data analysis'+#13+'Project dap.365',clBlue,clWhite);
+ InsertObject('Waiting','02:10','04:45','Review of other tasks',clBlue,clWhite);
 End;
 
 procedure TMainFrm.ClearAllObjects;
@@ -140,7 +140,7 @@ Begin
  new_object.BevelOuter    := bvNone;
  new_object.StyleElements := [];
  new_object.ShowHint      := True;
- new_object.Hint          := record_name+#13#13+Memo+#13#13+'Od: '+from_time+#13+'Do: '+to_time;
+ new_object.Hint          := record_name+#13#13+Memo+#13#13+'From: '+from_time+#13+'To: '+to_time;
 
  poz  := Pos(':',from_time);
  godzS:= Trim(Copy(from_time,1,poz-1)); Delete(from_time,1,poz);
@@ -243,12 +243,12 @@ Begin
    tab_rec_name[i].Caption    := 'pnl: '+IntToStr(i);
 
    //Some record for example
-   if i=1 then tab_rec_name[i].Caption := 'Oczekuj¹ce';
-   if i=2 then tab_rec_name[i].Caption := 'Zadanie 1';
-   if i=3 then tab_rec_name[i].Caption := 'Projekt domowy';
-   if i=4 then tab_rec_name[i].Caption := 'Zadanie 2';
-   if i=5 then tab_rec_name[i].Caption := 'Projekt firmowy';
-   if i=6 then tab_rec_name[i].Caption := 'Inne';
+   if i=1 then tab_rec_name[i].Caption := 'Waiting';
+   if i=2 then tab_rec_name[i].Caption := 'Task 1';
+   if i=3 then tab_rec_name[i].Caption := 'Home project';
+   if i=4 then tab_rec_name[i].Caption := 'Task 2';
+   if i=5 then tab_rec_name[i].Caption := 'Company project';
+   if i=6 then tab_rec_name[i].Caption := 'Other';
 
    tab_rec_name[i].Font.Style := [fsBold];
    tab_rec_name[i].StyleElements := [seFont, seBorder];

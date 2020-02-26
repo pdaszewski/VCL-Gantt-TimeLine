@@ -75,6 +75,9 @@
         <DCC_DcuOutput>.\Units\</DCC_DcuOutput>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_MajorVer>0</VerInfo_MajorVer>
+        <VerInfo_MinorVer>4</VerInfo_MinorVer>
+        <VerInfo_Keys>CompanyName=FX Systems Piotr Daszewski;FileDescription=$(MSBuildProjectName);FileVersion=0.4.0.0;InternalName=;LegalCopyright=FX Systems Piotr Daszewski;LegalTrademarks=FX Systems Piotr Daszewski;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=0.4;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
