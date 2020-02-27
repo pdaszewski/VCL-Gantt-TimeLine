@@ -121,9 +121,9 @@ Var
   new_label : TLabel;
   new_shape : TShape;
   i: Integer;
-  godzS, minS: string;
+  hourS, minuteS: string;
   poz: Integer;
-  godz, min: Integer;
+  hour, minute: Integer;
   left: Integer;
   end_time: Integer;
   width_pos: Integer;
@@ -142,19 +142,19 @@ Begin
  new_object.ShowHint      := True;
  new_object.Hint          := record_name+#13#13+Memo+#13#13+'From: '+from_time+#13+'To: '+to_time;
 
- poz  := Pos(':',from_time);
- godzS:= Trim(Copy(from_time,1,poz-1)); Delete(from_time,1,poz);
- minS := Trim(from_time);
- godz := StrToInt(godzS);
- min  := (godz*60)+StrToInt(minS);
- left := min*minute_width;
+ poz      := Pos(':',from_time);
+ hourS    := Trim(Copy(from_time,1,poz-1)); Delete(from_time,1,poz);
+ minuteS  := Trim(from_time);
+ hour     := StrToInt(hourS);
+ minute   := (hour*60)+StrToInt(minuteS);
+ left     := minute*minute_width;
 
  poz      := Pos(':',to_time);
- godzS    := Trim(Copy(to_time,1,poz-1)); Delete(to_time,1,poz);
- minS     := Trim(to_time);
- godz     := StrToInt(godzS);
- min      := (godz*60)+StrToInt(minS);
- end_time := min*minute_width;
+ hourS    := Trim(Copy(to_time,1,poz-1)); Delete(to_time,1,poz);
+ minuteS  := Trim(to_time);
+ hour     := StrToInt(hourS);
+ minute   := (hour*60)+StrToInt(minuteS);
+ end_time := minute*minute_width;
  width_pos:= end_time-left;
 
  new_object.Left  := left;
@@ -192,25 +192,25 @@ end;
 procedure TMainFrm.ShowVisilbeRecords;
 var
   i: Integer;
-  ile: Integer;
-  wys: Integer;
+  count: Integer;
+  height: Integer;
 Begin
- ile:=0;
+ count:=0;
  for i := 1 to ile_max_rekordow do
   Begin
    if tab_rec[i].Visible then
     Begin
-     tab_rec[i].Top := 3+((ile+1)*(pnl_height*2))-((ile+1)*2);
-     tab_rec_name[i].Top := 3+((ile+1)*(pnl_height*2))-((ile+1)*2);
-     Inc(ile);
+     tab_rec[i].Top := 3+((count+1)*(pnl_height*2))-((count+1)*2);
+     tab_rec_name[i].Top := 3+((count+1)*(pnl_height*2))-((count+1)*2);
+     Inc(count);
      pnl_pom.Top := 1;
      pnl_pom.Left := tab_rec_name[i].Left + tab_rec_name[i].Width + 2;
      pnl_pom.Width := 1;
      pnl_pom.Height:= 1;
     End;
   End;
- wys := (ile*(pnl_height*2))-(ile*2)+4;
- pointer_line.Height:=wys;
+ height := (count*(pnl_height*2))-(count*2)+4;
+ pointer_line.Height:=height;
 End;
 
 procedure TMainFrm.CreateRecords;
@@ -280,7 +280,7 @@ End;
 
 procedure TMainFrm.def_panelClick(Sender: TObject);
 Var
- panel : TPanel;
+  panel: TPanel;
   i: Integer;
 begin
  panel := TPanel(Sender);
@@ -301,7 +301,7 @@ end;
 
 procedure TMainFrm.def_panel_nameClick(Sender: TObject);
 Var
- panel : TPanel;
+  panel: TPanel;
   i: Integer;
 begin
  panel := TPanel(Sender);
@@ -372,8 +372,8 @@ var
   hour: string;
   x: Integer;
   w: Integer;
-  podzialka: TShape;
-  opis: TLabel;
+  graduation: TShape;
+  description: TLabel;
   c: Integer;
 Begin
  for i := 0 to 23 do
@@ -393,24 +393,24 @@ Begin
    minute_width:=w;
    for x := 1 to 60 do
     Begin
-     podzialka := TShape.Create(Self);
-     podzialka.Parent := tab_minuts[i];
-     podzialka.Width  := 1;
-     podzialka.Height := pnl_height div 5;
-     podzialka.Top    := tab_minuts[i].Height-podzialka.Height-(podzialka.Height div 2);
-     podzialka.Left   := (x)*w;
+     graduation := TShape.Create(Self);
+     graduation.Parent := tab_minuts[i];
+     graduation.Width  := 1;
+     graduation.Height := pnl_height div 5;
+     graduation.Top    := tab_minuts[i].Height-graduation.Height-(graduation.Height div 2);
+     graduation.Left   := (x)*w;
      if (x mod 5) = 0 then
       Begin
-       podzialka.Height := podzialka.Height+10;
-       podzialka.Top    := podzialka.Top-10;
+       graduation.Height := graduation.Height+10;
+       graduation.Top    := graduation.Top-10;
       End;
      if (x mod 15 = 0) and (x<>60) then
       Begin
-       opis := TLabel.Create(Self);
-       opis.Parent  := tab_minuts[i];
-       opis.Caption := IntToStr(x);
-       opis.Top     := -2;
-       opis.Left    := ((x)*w+2);
+       description := TLabel.Create(Self);
+       description.Parent  := tab_minuts[i];
+       description.Caption := IntToStr(x);
+       description.Top     := -2;
+       description.Left    := ((x)*w+2);
       End;
     End;
   End;
@@ -425,8 +425,8 @@ var
   hour: string;
   x: Integer;
   w: Integer;
-  podzialka: TShape;
-  opis: TLabel;
+  graduation: TShape;
+  description: TLabel;
   panel_name: TPanel;
   panel_pom: TPanel;
 Begin
@@ -476,24 +476,24 @@ Begin
    minute_width:=w;
    for x := 1 to 60 do
     Begin
-     podzialka := TShape.Create(Self);
-     podzialka.Parent := tab_minuts[i];
-     podzialka.Width  := 1;
-     podzialka.Height := pnl_height div 5;
-     podzialka.Top    := tab_minuts[i].Height-podzialka.Height-(podzialka.Height div 2);
-     podzialka.Left   := (x)*w;
+     graduation := TShape.Create(Self);
+     graduation.Parent := tab_minuts[i];
+     graduation.Width  := 1;
+     graduation.Height := pnl_height div 5;
+     graduation.Top    := tab_minuts[i].Height-graduation.Height-(graduation.Height div 2);
+     graduation.Left   := (x)*w;
      if (x mod 5) = 0 then
       Begin
-       podzialka.Height := podzialka.Height+10;
-       podzialka.Top    := podzialka.Top-10;
+       graduation.Height := graduation.Height+10;
+       graduation.Top    := graduation.Top-10;
       End;
      if (x mod 15 = 0) and (x<>60) then
       Begin
-       opis := TLabel.Create(Self);
-       opis.Parent  := tab_minuts[i];
-       opis.Caption := IntToStr(x);
-       opis.Top     := -2;
-       opis.Left    := ((x)*w+2);
+       description := TLabel.Create(Self);
+       description.Parent  := tab_minuts[i];
+       description.Caption := IntToStr(x);
+       description.Top     := -2;
+       description.Left    := ((x)*w+2);
       End;
     End;
   End;
@@ -531,11 +531,11 @@ end;
 procedure TMainFrm.MouseTimerTimer(Sender: TObject);
 var
   P: TPoint;
-  miejsce: Integer;
-  minut_od_poczatku: Integer;
-  godzina: Integer;
-  godzinaS: string;
-  minutS: string;
+  position: Integer;
+  position_from_start: Integer;
+  hour: Integer;
+  hourS: string;
+  minuteS: string;
 begin
   GetCursorPos(P);
   P:=MainFrm.ScreenToClient(P);
@@ -548,17 +548,17 @@ begin
     pointer_line.Left := P.X - (pnl_left.Width + Splitter1.Width)+2;
     pointer_line.BringToFront;
 
-    miejsce := box_main.HorzScrollBar.Position + (P.X - (pnl_left.Width + Splitter1.Width) - (pnl_pointer.Width div 2));
+    position := box_main.HorzScrollBar.Position + (P.X - (pnl_left.Width + Splitter1.Width) - (pnl_pointer.Width div 2));
 
-    minut_od_poczatku := (((miejsce) * 1440) div tab_rec[1].Width);
-    godzina := minut_od_poczatku div 60;
-    minut_od_poczatku := minut_od_poczatku - (godzina * 60);
+    position_from_start := (((position) * 1440) div tab_rec[1].Width);
+    hour := position_from_start div 60;
+    position_from_start := position_from_start - (hour * 60);
 
-    godzinaS := IntToStr(godzina); if Length(godzinaS)=1 then godzinaS:='0'+godzinaS;
-    minutS := IntToSTr(minut_od_poczatku); if Length(minutS)=1 then minutS:='0'+minutS;
+    hourS := IntToStr(hour); if Length(hourS)=1 then hourS:='0'+hourS;
+    minuteS := IntToSTr(position_from_start); if Length(minuteS)=1 then minuteS:='0'+minuteS;
 
 
-    StatusBar1.Panels[2].Text := DateToStr(display_date.Date)+' '+godzinaS+':'+minutS;
+    StatusBar1.Panels[2].Text := DateToStr(display_date.Date)+' '+hourS+':'+minuteS;
    End;
 end;
 
