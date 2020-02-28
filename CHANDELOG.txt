@@ -3,3 +3,5 @@ History:
 2019-10-11 The first version of the code. Interface built with basic components.
 
 2020-02-26 Start of full code translation into English.
+
+2020-02-28 Completion of translation of the code and user interface into English and minor corrections to the whole, including adding icons and VCL theme.
