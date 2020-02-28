@@ -77,8 +77,9 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
         <VerInfo_MinorVer>4</VerInfo_MinorVer>
-        <VerInfo_Keys>CompanyName=FX Systems Piotr Daszewski;FileDescription=$(MSBuildProjectName);FileVersion=0.4.0.2;InternalName=;LegalCopyright=FX Systems Piotr Daszewski;LegalTrademarks=FX Systems Piotr Daszewski;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=0.4;Comments=</VerInfo_Keys>
-        <VerInfo_Build>2</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=FX Systems Piotr Daszewski;FileDescription=$(MSBuildProjectName);FileVersion=0.4.0.4;InternalName=;LegalCopyright=FX Systems Piotr Daszewski;LegalTrademarks=FX Systems Piotr Daszewski;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=0.4;Comments=</VerInfo_Keys>
+        <VerInfo_Build>4</VerInfo_Build>
+        <Icon_MainIcon>GanttTimeLine_Icon.ico</Icon_MainIcon>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">

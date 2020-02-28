@@ -69,7 +69,7 @@ object MainFrm: TMainFrm
     Align = alClient
     TabOrder = 2
     object TabSheet1: TTabSheet
-      Caption = 'Linia czasu'
+      Caption = 'Time Line'
       object pnl_gantt: TPanel
         Left = 0
         Top = 0
